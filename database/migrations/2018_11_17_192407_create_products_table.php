@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->string('product_image');
             $table->string('product_color');
             $table->string('product_size');
+            $table->integar('no_of_sold');
+            $table->integar('priority');
             $table->boolean('publication_status');
             $table->timestamps();
         });

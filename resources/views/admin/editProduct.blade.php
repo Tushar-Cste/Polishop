@@ -87,6 +87,27 @@
 					<input type="text" class="input-xlarge" id="ProductName" name="product_size" value="{{$product->product_size}}">
 				  </div>
 				</div>
+				@php
+					if($product->priority == 1)
+						$status = "High";
+					else if($product->priority == 2)
+						$status = "Medium";
+					else
+						$status = "Low";
+
+				@endphp
+				<div class="control-group">
+					<label class="control-label" for="selectError3" >Select priority</label>
+					<div class="controls">
+					  <select id="selectError3" name="priority">
+					  	<option value="{{$product->priority}}">{{$status}}</option>
+						<option value="1">High</option>
+						<option value="2">Medium</option>
+						<option value="3">Low</option>
+					  </select>
+					</div>
+				  </div>
+
 				<div class="control-group">
 				  <label class="control-label" for="ProductName">Product Image</label>
 				  <div class="controls">

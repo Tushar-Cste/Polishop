@@ -82,6 +82,18 @@
 				</div>
 
 				<div class="control-group">
+					<label class="control-label" for="selectError3" >Select priority</label>
+					<div class="controls">
+					  <select id="selectError3" name="priority">
+					  	<option>select priority</option>
+						<option value="1">High</option>
+						<option value="2">Medium</option>
+						<option value="3">Low</option>
+					  </select>
+					</div>
+				  </div>
+
+				<div class="control-group">
 				  <label class="control-label" for="ProductName">Product Size</label>
 				  <div class="controls">
 					<input type="text" class="input-xlarge" id="ProductName" name="product_size">

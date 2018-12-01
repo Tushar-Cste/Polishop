@@ -12,8 +12,12 @@ use Session;
 class FrontController extends Controller
 {
     public function index(){
+        $allproducts = Product::where('priority',3)
+                                ->orderBy('no_of_sold','DESC')
+                                ->limit('8')
+                                ->get();
         $allbrand = Brand::limit('5')->get();
-    	return view('frontend.index')->with('allbrand',$allbrand);
+    	return view('frontend.index')->with('allbrand',$allbrand)->with('allproducts',$allproducts);
     }
 
     public function contactUs(){
@@ -118,6 +122,12 @@ class FrontController extends Controller
         Session::put('sort',$request->sort);
         
         return redirect('/sortby/'.$id);
+    }
+
+    //to show in the homepage
+    public function specialProduct(){
+        $allproducts = Product::orderBy('priority','ASC')->limit('10')->get();
+        return redirect()->back();
     }
 
     // nothing to change

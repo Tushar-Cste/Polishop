@@ -25,6 +25,8 @@ class ProductController extends Controller
     	$product->product_size = $request->product_size;
     	$product->product_color = $request->product_color;
     	$product->publication_status = 1;
+        $product->priority = $request->priority;
+        $product->no_of_sold = 0;
 
     	if($request->hasFile('product_image')){
             //get file name with extention
@@ -71,6 +73,12 @@ class ProductController extends Controller
     	return redirect('/allProduct');
     }
 
+    public function changePriority(Request $request,$id){
+        $product = Product::find($id);
+        $product->priority = $request->priority;
+        $product->save();
+        return redirect('/allProduct');
+    }
     public function editproduct($product_id){
     	$this->adminAuthCheck();
     	$product = Product::find($product_id);
@@ -88,7 +96,7 @@ class ProductController extends Controller
     	$product->product_size = $request->product_size;
     	$product->product_color = $request->product_color;
     	$product->publication_status = $request->publication_status;
-
+        $product->priority = $request->priority;
 
     	if($request->hasFile('product_image')){
     		if($product->product_image != 'noimage.jpg'){

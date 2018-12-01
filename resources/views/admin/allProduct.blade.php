@@ -38,6 +38,8 @@
 						  <th>Product Image</th>
 						  <th>Category Name</th>
 						  <th>Sub-Category Name</th>
+						  <th>Priority</th>
+						  <th>Total Sell</th>
 						  <th>Status</th>
 						  <th>Actions</th>
 					  </tr>
@@ -50,6 +52,39 @@
 						<td class="center"><img src="/storage/product_images/{{$product->product_image}}" style="width: 100px; height: 80px;" ></td>
 						<td class="center">{{$product->category->category_name}}</td>
 						<td class="center">{{$product->subcategory->sub_category_name}}</td>
+						<td class="center">
+							
+							@php
+								if($product->priority == 1)
+									$status = "High";
+								else if($product->priority == 2)
+									$status = "Medium";
+								else
+									$status = "Low";
+
+							@endphp
+							<form action="{{URL::to('/changePriority/'.$product->id)}}" method="post" id="myForm">
+							{{csrf_field()}}
+							<div class="control-group">
+								<div class="controls">
+								  <select id="selectError3" name="priority" onChange=selectChange(this.value)>
+								  	<option value="{{$product->priority}}">{{$status}}</option>
+									<option value="1">High</option>
+									<option value="2">Medium</option>
+									<option value="3">Low</option>
+								  </select>
+								</div>
+							  </div>
+							</form>
+							<script>
+							function selectChange(val) {
+							    //Set the value of action in action attribute of form element.
+							    //Submit the form
+							    $('#myForm').submit();
+							}
+							</script>
+						</td>
+						<td class="center">{{$product->no_of_sold}}</td>
 						<td class="center">
 							@if($product->publication_status == 1)
 								<span class="label label-success">active</span>

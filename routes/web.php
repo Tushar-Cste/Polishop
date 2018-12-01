@@ -40,6 +40,10 @@ Route::get('/showRangeProduct/{product}','FrontController@showRangeProduct');
 Route::post('/sortProduct/{id}','FrontController@sortProduct');
 Route::get('/sortby/{id}','FrontController@sortBy');
 
+//product to show inorder of bestseller, special, latest
+
+Route::get('/specialProduct','FrontController@specialProduct');
+
 
 /*
 	Route for backend
@@ -84,6 +88,7 @@ Route::get('/active_product/{product_id}','ProductController@active_product');
 Route::get('/editproduct/{product_id}','ProductController@editproduct');
 Route::post('/updateProduct/{product_id}','ProductController@updateProduct');
 Route::get('/deleteproduct/{product_id}','ProductController@deleteproduct');
+Route::post('/changePriority/{id}','ProductController@changePriority');
 
 //routes for brand
 
