@@ -119,4 +119,6 @@ class FrontController extends Controller
         
         return redirect('/sortby/'.$id);
     }
+
+    // nothing to change
 }
